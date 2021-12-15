@@ -15,7 +15,10 @@ public class Developer implements Serializable {
     private String devTitle;
     private String phone;
     private String imgUrl;
+    @Column(nullable = false, updatable = false)
+    private String devCode;
 
+    public Developer() {}
     public Developer(String name, String email, String devTitle, String phone, String imgUrl, String devCode) {
         this.name = name;
         this.email = email;
@@ -73,16 +76,24 @@ public class Developer implements Serializable {
         this.devCode = devCode;
     }
 
-    @Column(nullable = false, updatable = false)
-    private String devCode;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Developer{" +
-                "id=" + id +", name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", devTitle='" + devTitle + '\'' +
                 ", phone='" + phone + '\'' +
-                ", imgUrl='" + imgUrl + '\'' + '}';
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
     }
 }
